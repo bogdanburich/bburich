@@ -2,7 +2,6 @@ body {
     margin-top:20px;
     background:#DCDCDC;
 }
-/*profile page*/
 
 .left-profile-card .user-profile {
     width: 150px;
@@ -119,4 +118,15 @@ a:hover {
 
 a:visited {
     color: #6c757d;
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding:0;
+        margin:0;
+      }
+  
+      body {
+        padding:0;
+      }
 }
