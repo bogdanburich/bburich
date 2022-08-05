@@ -80,3 +80,18 @@ class Experience(models.Model):
 
     def __str__(self):
         return f'{self.company} | {self.role}'
+
+
+class Project(models.Model):
+    title=models.URLField()
+    ginhub=models.URLField()
+    link=models.URLField(
+        null=True,
+        blank=True
+    )
+    date_added=models.DateTimeField(
+        auto_now_add=True
+    )
+
+    class Meta:
+        ordering = ['-date_added']
