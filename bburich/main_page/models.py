@@ -84,11 +84,12 @@ class Experience(models.Model):
 
 class Project(models.Model):
     title=models.URLField()
-    ginhub=models.URLField()
+    github=models.URLField()
     link=models.URLField(
         null=True,
         blank=True
     )
+    description=models.TextField()
     date_added=models.DateTimeField(
         auto_now_add=True
     )
