@@ -83,7 +83,7 @@ class Experience(models.Model):
 
 
 class Project(models.Model):
-    title = models.URLField()
+    title = models.CharField(max_length=24)
     github = models.URLField()
     link = models.URLField(
         null=True,
