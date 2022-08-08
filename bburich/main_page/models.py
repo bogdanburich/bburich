@@ -1,17 +1,18 @@
 from django.db import models
-from .validators import validate_logo
+from .validators import validate_logo, validate_github
 
 
 class Company(models.Model):
     name = models.CharField(max_length=24)
-    logo = models.ImageField(
-        upload_to='companies/',
+    logo = models.FileField(
+        upload_to='public/',
         validators=[validate_logo]
     )
     description = models.TextField(
         blank=True,
         max_length=256
-    )
+    ),
+    link = models.URLField()
 
     class Meta:
         verbose_name_plural = 'Companies'
@@ -79,7 +80,9 @@ class Experience(models.Model):
 
 class Project(models.Model):
     title = models.CharField(max_length=24)
-    github = models.URLField()
+    github = models.URLField(
+        validators=[validate_github]
+    )
     link = models.URLField(
         null=True,
         blank=True
