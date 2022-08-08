@@ -6,7 +6,7 @@
             <div class="text-center">
                 <img src="{% static 'img/profile.jpg' %}" alt="" class="user-profile">
                 <h3>Bogdan Burich</h3>
-                <p>System Analyst at A-ADS</p>
+                <p>{{ current_job.role }} at <a href="{{ current_job.company.link }}">{{ current_job.company.name }}</a></p>
                 <hr>
             </div>
             <div class="personal-info">

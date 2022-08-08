@@ -5,6 +5,7 @@ from .models import Experience, Skill, Project, Instrument
 def index(request):
     skills = Skill.objects.all()
     instuments = Instrument.objects.all()
+    current_job = Experience.objects.select_related('company').last()
     work_experience = Experience.objects.select_related('company').all()
     projects = Project.objects.all()
     template = 'main_page/index.html'
@@ -12,6 +13,7 @@ def index(request):
     context = {
         "skills": skills,
         "technologies": instuments,
+        "current_job": current_job,
         "work_experience": work_experience,
         "projects": projects,
     }
