@@ -13,6 +13,6 @@ def index(request):
         "skills": skills,
         "technologies": technologies,
         "work_experience": work_experience,
-        "projets": projects,
+        "projects": projects,
     }
     return render(request, template, context)
