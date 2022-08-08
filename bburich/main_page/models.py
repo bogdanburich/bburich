@@ -3,11 +3,6 @@ from .validators import validate_logo
 
 
 class Company(models.Model):
-    EMPLOYMENT_TYPES = [
-        ('FT', 'Full-time'),
-        ('PT', 'Part-time')
-    ]
-
     name = models.CharField(max_length=24)
     logo = models.ImageField(
         upload_to='companies/',
@@ -16,11 +11,6 @@ class Company(models.Model):
     description = models.TextField(
         blank=True,
         max_length=256
-    )
-    employment_type = models.CharField(
-        max_length=2,
-        choices=EMPLOYMENT_TYPES,
-        default='FT'
     )
 
     class Meta:
@@ -44,6 +34,11 @@ class Technology(models.Model):
 
 
 class Experience(models.Model):
+    EMPLOYMENT_TYPES = [
+        ('FT', 'Full-time'),
+        ('PT', 'Part-time')
+    ]
+
     role = models.CharField(max_length=48)
     start_at = models.DateField()
     end_at = models.DateField()
@@ -72,10 +67,15 @@ class Experience(models.Model):
         on_delete=models.SET_NULL,
         related_name='experience',
         verbose_name='Technologies'
+    ),
+    employment_type = models.CharField(
+        max_length=2,
+        choices=EMPLOYMENT_TYPES,
+        default='FT'
     )
 
     class Meta:
-        ordering = ['-start_at']
+        ordering = ['-start_at', '-employment_type']
         verbose_name_plural = 'Experience'
 
     def __str__(self):
