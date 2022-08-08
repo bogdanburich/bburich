@@ -45,7 +45,10 @@ class Experience(models.Model):
 
     role = models.CharField(max_length=48)
     start_at = models.DateField()
-    end_at = models.DateField()
+    end_at = models.DateField(
+        blank=True,
+        null=True
+    )
     description = models.TextField(
         verbose_name='Description',
         blank=True
