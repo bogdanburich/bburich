@@ -3,8 +3,8 @@ body {
     background:#DCDCDC;
 }
 
-i {
-    margin-left: 5px;
+.work-container-title-icon i {
+    margin-left: 10px;
 }
 
 .left-profile-card .user-profile {
@@ -107,7 +107,7 @@ i {
 }
 
 .right-profile-card .work-container {
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     padding: 10px;
 }
 
