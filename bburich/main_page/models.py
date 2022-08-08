@@ -24,13 +24,16 @@ class Skill(models.Model):
     name = models.CharField(max_length=24)
     value = models.IntegerField()
 
+    class Meta:
+        ordering = ['-value']
 
-class Technology(models.Model):
+
+class Instrument(models.Model):
     name = models.CharField(max_length=24)
     value = models.IntegerField()
 
     class Meta:
-        verbose_name_plural = 'Technologies'
+        ordering = ['-value']
 
 
 class Experience(models.Model):
@@ -60,14 +63,6 @@ class Experience(models.Model):
         related_name='experience',
         verbose_name='Skills'
     )
-    technologies = models.ForeignKey(
-        Technology,
-        blank=True,
-        null=True,
-        on_delete=models.SET_NULL,
-        related_name='experience',
-        verbose_name='Technologies'
-    ),
     employment_type = models.CharField(
         max_length=2,
         choices=EMPLOYMENT_TYPES,
