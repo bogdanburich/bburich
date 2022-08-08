@@ -21,10 +21,9 @@
             </div>
             <div class="skill">
                 <h3>Skills</h3>
-                <p>System Analysis</p>
-                <p>Python + Django, DRF</p>
-                <p>SQL</p>
-                <p>REST API</p>
+                {% for skill in skills %}
+                    <p>{{ skill.name }}</p>
+                {% endfor %}
             </div>
             <div class="languages">
                 <h3>Languages</h3>
