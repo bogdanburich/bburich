@@ -1,9 +1,21 @@
 import os
+import sentry_sdk
 
 from dotenv import load_dotenv
-
+from sentry_sdk.integrations.django import DjangoIntegration
 
 load_dotenv()
+
+
+if os.getenv('ENVIRONMENT') == 'PRODUCTION':
+    sentry_sdk.init(
+        dsn="https://f4b292f59d8843ecbac000ccc9ec7ea5@o1343486.ingest.sentry.io/6634437",
+        integrations=[
+            DjangoIntegration(),
+        ],
+        traces_sample_rate=1.0,
+        send_default_pii=True
+    )
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -12,6 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('DJANGO_SECRET')
 
 DEBUG = True
+
+if os.getenv('ENVIRONMENT') == 'PRODUCTION':
+    DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -59,13 +74,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'bburich.wsgi.application'
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+if os.getenv('ENVIRONMENT') == 'PRODUCTION':
+    DATABASES = {
+        'default': {
+            'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.postgresql'),
+            'NAME': os.getenv('DB_NAME'),
+            'USER': os.getenv('POSTGRES_USER'),
+            'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+            'HOST': os.getenv('DB_HOST'),
+            'PORT': os.getenv('DB_PORT')
+        }
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
