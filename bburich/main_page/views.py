@@ -5,7 +5,7 @@ from .models import Experience, Skill, Project, Instrument
 def index(request):
     skills = Skill.objects.all()
     instuments = Instrument.objects.all()
-    current_job = Experience.objects.select_related('company').last()
+    current_job = Experience.objects.select_related('company').latest('start_at')
     experience = Experience.objects.select_related('company').all()
     projects = Project.objects.all()
     template = 'main_page/index.html'
