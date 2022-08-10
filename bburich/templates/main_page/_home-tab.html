@@ -1,28 +1,23 @@
 {% load static %}
 
+{% regroup experience by company as companies_list %}
+
 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-{% for experience in work_experience %}
-    {% ifchanged experience.company %}
     <div class="work-container">
+    {% for company in companies_list %}
         <div class="row">
             <div class="col-xxl-1 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-3">
-                <img src="{% get_media_prefix %}{{ experience.company.logo }}" class="img-fluid">
+                <img src="{% get_media_prefix %}{{ company.grouper.logo }}" class="img-fluid">
             </div>
             <div class="col-xxl-11 col-xl-10 col-lg-10 col-md-10 col-sm-10 col-9">
-                <h2>{{ experience.company.name }}</h2>
-                {% include 'main_page/_experience_card.html' %}
-        {% else %}
-                {% include 'main_page/_experience_card.html' %}
+                <h2>{{ company.grouper }}</h2>
+                    {% for experience in company.list %}
+                        {% include 'main_page/_experience_card.html' %}
+                        {% if not forloop.last %}<hr>{% endif %}
+                    {% endfor %}
             </div>
         </div>
+        {% if not forloop.last %}<hr>{% endif %}
+    {% endfor %}
     </div>
-    {% endifchanged %}
-    {% if not forloop.last %}
-        <hr>
-    {% else %}
-            </div>
-        </div>
-    </div>
-    {% endif %}
-{% endfor %}
 </div>
