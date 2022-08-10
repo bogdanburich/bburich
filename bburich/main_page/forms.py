@@ -20,7 +20,7 @@ class ExperienceAdminForm(forms.ModelForm):
         if end_at and end_at > datetime.now().date():
             raise ValidationError('end_at field must be earlier than today')
 
-        if end_at < start_at:
+        if end_at and end_at < start_at:
             raise ValidationError(
                 'end_at filed must be earlier than start_at field'
             )
