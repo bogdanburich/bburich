@@ -28,9 +28,12 @@ DEBUG = True
 if os.getenv('ENVIRONMENT') == 'PRODUCTION':
     DEBUG = False
 
-ALLOWED_HOSTS = [
-    'bburich.me'
-]
+ALLOWED_HOSTS = ['*']
+
+if os.getenv('ENVIRONMENT') == 'PRODUCTION':
+    ALLOWED_HOSTS = [
+        'bburich.me'
+    ]
 
 
 INSTALLED_APPS = [
