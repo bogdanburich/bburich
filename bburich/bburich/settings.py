@@ -28,7 +28,9 @@ DEBUG = True
 if os.getenv('ENVIRONMENT') == 'PRODUCTION':
     DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'bburich.me'
+]
 
 
 INSTALLED_APPS = [
@@ -118,7 +120,9 @@ USE_I18N = True
 USE_TZ = True
 
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/bburich/'
+
+STATIC_ROOT = '/home/apps/static/bburich/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
