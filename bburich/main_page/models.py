@@ -74,7 +74,7 @@ class Experience(models.Model):
     )
 
     class Meta:
-        ordering = ['-start_at', '-employment_type']
+        ordering = ['-employment_type', '-start_at']
         verbose_name_plural = 'Experience'
 
     def __str__(self):
