@@ -27,6 +27,9 @@ class Skill(models.Model):
 
     class Meta:
         ordering = ['-value']
+    
+    def __str__(self):
+        return self.name
 
 
 class Instrument(models.Model):
@@ -35,6 +38,9 @@ class Instrument(models.Model):
 
     class Meta:
         ordering = ['-value']
+    
+    def __str__(self):
+        return self.name
 
 
 class Experience(models.Model):
@@ -97,3 +103,6 @@ class Project(models.Model):
 
     class Meta:
         ordering = ['-date_added']
+    
+    def __str__(self):
+        return self.title
