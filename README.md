@@ -9,3 +9,7 @@
 ## Managing content
 
 Most of content managed via Django admin, models provided for: experience, companies, skills, instruments, projects
+
+## CI
+
+Github Actions runs flake8 tests
