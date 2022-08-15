@@ -26,4 +26,4 @@ jobs:
 
       - name: run flake8
         run:
-          python flake8 .
+          python -m flake8
