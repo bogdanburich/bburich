@@ -1,11 +1,13 @@
 from django.shortcuts import render
-from .models import Experience, Skill, Project, Instrument
+
+from .models import Experience, Instrument, Project, Skill
 
 
 def index(request):
     skills = Skill.objects.all()
     instruments = Instrument.objects.all()
-    current_job = Experience.objects.select_related('company').latest('start_at')
+    current_job = (Experience.objects.select_related('company')
+                   .latest('start_at'))
     experience = Experience.objects.select_related('company').all()
     projects = Project.objects.all()
     template = 'main_page/index.html'

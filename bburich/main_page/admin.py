@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .forms import ExperienceAdminForm
-from .models import Company, Experience, Skill, Instrument, Project
+from .models import Company, Experience, Instrument, Project, Skill
 
 
 class ExperienceAdmin(admin.ModelAdmin):

@@ -1,6 +1,6 @@
 import os
-
 from urllib.parse import urlparse
+
 from django.core.exceptions import ValidationError
 
 
@@ -11,7 +11,7 @@ def validate_logo(logo):
     if not ext.lower() in valid_extensions:
         raise ValidationError('Unsupported file extension.')
 
-    if logo.file.size > 128*1024:
+    if logo.file.size > 128 * 1024:
         raise ValidationError('Logo must be less than 128 kitobytes.')
 
 

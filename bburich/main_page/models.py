@@ -1,5 +1,6 @@
 from django.db import models
-from .validators import validate_logo, validate_github
+
+from .validators import validate_github, validate_logo
 
 
 class Company(models.Model):
@@ -27,7 +28,7 @@ class Skill(models.Model):
 
     class Meta:
         ordering = ['-value']
-    
+
     def __str__(self):
         return self.name
 
@@ -38,7 +39,7 @@ class Instrument(models.Model):
 
     class Meta:
         ordering = ['-value']
-    
+
     def __str__(self):
         return self.name
 
@@ -103,6 +104,6 @@ class Project(models.Model):
 
     class Meta:
         ordering = ['-date_added']
-    
+
     def __str__(self):
         return self.title
