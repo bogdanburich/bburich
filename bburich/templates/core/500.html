@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Internal Server Error
+{% endblock %}
+
+{% block content %}
+    <div class="error-background">
+        <h1>Something went wrong.</h1>
+        <h2>I already know about problem and will fix it soon, try <a href="{% url 'main_page:index' %}">another page</a></h2>
+    </div>
+{% endblock %}

@@ -3,6 +3,18 @@ body {
     background:#DCDCDC;
 }
 
+h2 {
+    font-size: 20px;
+}
+
+.error-background {
+    background: #fff;
+    padding: 30px;
+    width: auto;
+    height: auto;
+    border-radius: .25rem;
+}
+
 .work-container-title-icon i {
     margin-left: 10px;
 }
@@ -154,6 +166,10 @@ a:visited {
 
     body {
         padding:0;
+    }
+
+    .error-background {
+        margin: 10px;
     }
 }
 

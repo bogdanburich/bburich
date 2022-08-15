@@ -38,6 +38,7 @@ if os.getenv('ENVIRONMENT') == 'PRODUCTION':
 
 INSTALLED_APPS = [
     'main_page.apps.MainPageConfig',
+    'core.apps.CoreConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Page {{ path }} not found.
+{% endblock %}
+
+{% block content %}
+    <div class="error-background">
+        <h1>Page {{ path }} not found.</h1>
+        <h2>Try <a href="{% url 'main_page:index' %}">another page</a></h2>
+    </div>
+{% endblock %}
