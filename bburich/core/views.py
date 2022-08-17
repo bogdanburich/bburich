@@ -3,11 +3,10 @@ from http import HTTPStatus
 from django.shortcuts import render
 
 
-def not_found(request, *args):
+def not_found(request, exception):
     tempate = 'core/404.html'
     context = {
         'path': request.path,
-        'host': request.get_host()
     }
     return render(request, tempate, context, status=HTTPStatus.NOT_FOUND)
 
